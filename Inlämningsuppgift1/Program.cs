@@ -8,12 +8,13 @@ namespace Inlämningsuppgift1
     {
         static void Main(string[] args)
         {
-
             Console.Title = "The Calculator";
             Console.WriteLine("> Welcome to The Calculator");
+            
             string op1, op2;
             double num1, num2, num3;
             List<double> results = new List<double>();
+
             do
             {
                 do
@@ -23,6 +24,7 @@ namespace Inlämningsuppgift1
                     if (Validate(op1))
                         break;
                     Console.WriteLine("> You have to enter a valid operator");
+
                 } while (true);
 
                 do
@@ -32,6 +34,7 @@ namespace Inlämningsuppgift1
                     if (Validate(op2))
                         break;
                     Console.WriteLine("> You have to enter a valid operator");
+
                 } while (true);
 
                 do
@@ -39,7 +42,8 @@ namespace Inlämningsuppgift1
                     Console.Write("> Enter first term: ");
                     if (double.TryParse(Console.ReadLine(), out num1))
                         break;
-                    Console.WriteLine("> You have to enter a number"); 
+                    Console.WriteLine("> You have to enter a number");
+
                 } while (true);
 
                 do
@@ -47,7 +51,8 @@ namespace Inlämningsuppgift1
                     Console.Write("> Enter second term: ");
                     if (double.TryParse(Console.ReadLine(), out num2))
                         break;
-                    Console.WriteLine("> You have to enter a number"); 
+                    Console.WriteLine("> You have to enter a number");
+
                 } while (true);
 
                 do
@@ -55,7 +60,8 @@ namespace Inlämningsuppgift1
                     Console.Write("> Enter third term: ");
                     if (double.TryParse(Console.ReadLine(), out num3))
                         break;
-                    Console.WriteLine("> You have to enter a number"); 
+                    Console.WriteLine("> You have to enter a number");
+
                 } while (true);
 
                 double result;
