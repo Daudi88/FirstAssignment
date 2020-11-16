@@ -8,72 +8,160 @@ namespace Inlämningsuppgift1
     {
         static void Main(string[] args)
         {
-            Console.Title = "Calculator";
 
+            Console.Title = "The Calculator";
+            Console.WriteLine("> Welcome to The Calculator");
+            string op1, op2;
+            double num1, num2, num3;
+            List<double> results = new List<double>();
             do
             {
-                Console.Write("> Enter first operator: ");
-                string op1 = Console.ReadLine();
-                Console.Write("> Enter second operator: ");
-                string op2 = Console.ReadLine();
-                Console.Write("> Enter first term: ");
-                double.TryParse(Console.ReadLine(), out double num1);
-                Console.Write("> Enter second term: ");
-                double.TryParse(Console.ReadLine(), out double num2);
-                Console.Write("> Enter third term: ");
-                double.TryParse(Console.ReadLine(), out double num3);
+                do
+                {
+                    Console.Write("> Enter first operator: ");
+                    op1 = Console.ReadLine();
+                    if (Validate(op1))
+                        break;
+                    Console.WriteLine("> You have to enter a valid operator");
+                } while (true);
 
-                double result = 0;
+                do
+                {
+                    Console.Write("> Enter second operator: ");
+                    op2 = Console.ReadLine();
+                    if (Validate(op2))
+                        break;
+                    Console.WriteLine("> You have to enter a valid operator");
+                } while (true);
+
+                do
+                {
+                    Console.Write("> Enter first term: ");
+                    if (double.TryParse(Console.ReadLine(), out num1))
+                        break;
+                    Console.WriteLine("> You have to enter a number"); 
+                } while (true);
+
+                do
+                {
+                    Console.Write("> Enter second term: ");
+                    if (double.TryParse(Console.ReadLine(), out num2))
+                        break;
+                    Console.WriteLine("> You have to enter a number"); 
+                } while (true);
+
+                do
+                {
+                    Console.Write("> Enter third term: ");
+                    if (double.TryParse(Console.ReadLine(), out num3))
+                        break;
+                    Console.WriteLine("> You have to enter a number"); 
+                } while (true);
+
+                double result;
 
                 if (op1 == "+")
                 {
-                    if (op2 == "+") result = num1 + num2 + num3;
-                    else if (op2 == "-") result = num1 + num2 - num3;
-                    else if (op2 == "x") result = num1 + num2 * num3;
-                    else result = num1 + num2 / num3;
+                    if (op2 == "+")
+                        result = num1 + num2 + num3;
+                    else if (op2 == "-")
+                        result = num1 + num2 - num3;
+                    else if (op2 == "x")
+                        result = num1 + num2 * num3;
+                    else if (op2 == "*")
+                        result = num1 + num2 * num3;
+                    else
+                        result = num1 + num2 / num3;
                 }
                 else if (op1 == "-")
                 {
-                    if (op2 == "+") result = num1 - num2 + num3;
-                    else if (op2 == "-") result = num1 - num2 - num3;
-                    else if (op2 == "x") result = num1 - num2 * num3;
-                    else result = num1 - num2 / num3;
+                    if (op2 == "+")
+                        result = num1 - num2 + num3;
+                    else if (op2 == "-")
+                        result = num1 - num2 - num3;
+                    else if (op2 == "x")
+                        result = num1 - num2 * num3;
+                    else if (op2 == "*")
+                        result = num1 - num2 * num3;
+                    else
+                        result = num1 - num2 / num3;
+                }
+                else if (op1.ToLower() == "x")
+                {
+                    if (op2 == "+")
+                        result = num1 * num2 + num3;
+                    else if (op2 == "-")
+                        result = num1 * num2 - num3;
+                    else if (op2 == "x")
+                        result = num1 * num2 * num3;
+                    else if (op2 == "*")
+                        result = num1 * num2 * num3;
+                    else
+                        result = num1 * num2 / num3;
                 }
                 else if (op1 == "*")
                 {
-                    if (op2 == "+") result = num1 * num2 + num3;
-                    else if (op2 == "-") result = num1 * num2 - num3;
-                    else if (op2 == "x") result = num1 * num2 * num3;
-                    else result = num1 * num2 / num3;
+                    if (op2 == "+")
+                        result = num1 * num2 + num3;
+                    else if (op2 == "-")
+                        result = num1 * num2 - num3;
+                    else if (op2 == "x")
+                        result = num1 * num2 * num3;
+                    else if (op2 == "*")
+                        result = num1 * num2 * num3;
+                    else
+                        result = num1 * num2 / num3;
                 }
                 else
                 {
-                    if (op2 == "+") result = num1 / num2 + num3;
-                    else if (op2 == "-") result = num1 / num2 - num3;
-                    else if (op2 == "x") result = num1 / num2 * num3;
-                    else result = num1 / num2 / num3;
+                    if (op2 == "+")
+                        result = num1 / num2 + num3;
+                    else if (op2 == "-")
+                        result = num1 / num2 - num3;
+                    else if (op2 == "x")
+                        result = num1 / num2 * num3;
+                    else if (op2 == "*")
+                        result = num1 / num2 * num3;
+                    else
+                        result = num1 / num2 / num3;
                 }
 
-                Console.WriteLine($"> {num1} {op1} {num2} {op2} {num3} = {result}");
-                List<double> results = new List<double>();
+                Console.WriteLine($"> {num1} {op1.ToLower()} {num2} {op2.ToLower()} {num3} = {result}");
                 results.Add(result);
 
                 if (result == 100)
-                    Console.WriteLine("\n> Cool, now you have a hundred, clap clap");
+                    Console.WriteLine("> Cool, now you have a hundred, clap clap");
                 else if (result < 100)
-                    Console.WriteLine("\n> Less then a hundred");
+                    Console.WriteLine("> Less then a hundred");
                 else
-                    Console.WriteLine("\n> More then a hundred");
+                    Console.WriteLine("> More then a hundred");
 
-                Console.Write("Another try?(y/n) ");
+                Console.Write("> Another try?(y/n) ");
                 string userChoice = Console.ReadLine();
                 if (userChoice.ToLower().StartsWith("n"))
                 {
                     Console.WriteLine($"> Than you for playing. The sum of all round is {results.Sum()}. Bye");
+                    Console.ReadLine();
                     break;
                 }
 
             } while (true);
+        }
+
+        static bool Validate(string op)
+        {
+            if (op == "+")
+                return true;
+            else if (op == "-")
+                return true;
+            else if (op.ToLower() == "x")
+                return true;
+            else if (op == "*")
+                return true;
+            else if (op == "/")
+                return true;
+            else
+                return false;
         }
     }
 }
