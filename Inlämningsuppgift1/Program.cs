@@ -66,70 +66,15 @@ namespace Inlämningsuppgift1
 
                 double result;
 
-                if (op1 == "+")
+                if (op2.ToLower() == "x" || op2 == "*" || op2 == "/")
                 {
-                    if (op2 == "+")
-                        result = num1 + num2 + num3;
-                    else if (op2 == "-")
-                        result = num1 + num2 - num3;
-                    else if (op2 == "x")
-                        result = num1 + num2 * num3;
-                    else if (op2 == "*")
-                        result = num1 + num2 * num3;
-                    else
-                        result = num1 + num2 / num3;
-                }
-                else if (op1 == "-")
-                {
-                    if (op2 == "+")
-                        result = num1 - num2 + num3;
-                    else if (op2 == "-")
-                        result = num1 - num2 - num3;
-                    else if (op2 == "x")
-                        result = num1 - num2 * num3;
-                    else if (op2 == "*")
-                        result = num1 - num2 * num3;
-                    else
-                        result = num1 - num2 / num3;
-                }
-                else if (op1.ToLower() == "x")
-                {
-                    if (op2 == "+")
-                        result = num1 * num2 + num3;
-                    else if (op2 == "-")
-                        result = num1 * num2 - num3;
-                    else if (op2 == "x")
-                        result = num1 * num2 * num3;
-                    else if (op2 == "*")
-                        result = num1 * num2 * num3;
-                    else
-                        result = num1 * num2 / num3;
-                }
-                else if (op1 == "*")
-                {
-                    if (op2 == "+")
-                        result = num1 * num2 + num3;
-                    else if (op2 == "-")
-                        result = num1 * num2 - num3;
-                    else if (op2 == "x")
-                        result = num1 * num2 * num3;
-                    else if (op2 == "*")
-                        result = num1 * num2 * num3;
-                    else
-                        result = num1 * num2 / num3;
+                    result = GetResult(num2, num3, op2);
+                    result = GetResult(num1, result, op1);
                 }
                 else
                 {
-                    if (op2 == "+")
-                        result = num1 / num2 + num3;
-                    else if (op2 == "-")
-                        result = num1 / num2 - num3;
-                    else if (op2 == "x")
-                        result = num1 / num2 * num3;
-                    else if (op2 == "*")
-                        result = num1 / num2 * num3;
-                    else
-                        result = num1 / num2 / num3;
+                    result = GetResult(num1, num2, op1);
+                    result = GetResult(result, num3, op2);
                 }
 
                 Console.WriteLine($"> {num1} {op1.ToLower()} {num2} {op2.ToLower()} {num3} = {result}");
@@ -156,18 +101,22 @@ namespace Inlämningsuppgift1
 
         static bool Validate(string op)
         {
-            if (op == "+")
-                return true;
-            else if (op == "-")
-                return true;
-            else if (op.ToLower() == "x")
-                return true;
-            else if (op == "*")
-                return true;
-            else if (op == "/")
+            if (op == "+" || op == "-" || op.ToLower() == "x" || op == "*" || op == "/")
                 return true;
             else
                 return false;
+        }
+
+        static double GetResult(double a, double b, string op)
+        {
+            if (op == "+")
+                return a + b;
+            else if (op == "-")
+                return a - b;
+            else if (op == "*" || op.ToLower() == "x")
+                return a * b;
+            else
+                return a / b;
         }
     }
 }
